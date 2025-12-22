@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #0b0b0b;
+    color: #f5f5f5;
+}
+
+/* NAV */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35),
+        rgba(0, 0, 0, 0)
+    );
+}
+
+
+.nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 30px;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: white;
+}
+
+.logo {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding-top: 120px; /* 🔥 QUESTO È IL FIX */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+
+.hero-content {
+    max-width: 1100px;
+    width: 100%;
+    padding: 0 60px;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.hero-content span {
+    color: #b0c7d1;
+}
+
+.hero-content p {
+    margin-top: 20px;
+    color: #d0e0e7;
+    font-size: 16px;
+}
+
+/* SECTIONS */
+.section {
+    padding: 140px 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.section > * {
+    max-width: 1100px;
+    width: 100%;
+}
+
+
+.section h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+
+.section p {
+    max-width: 600px;
+    color: #aaa;
+    line-height: 1.7;
+}
+
+.dark {
+    background: #111;
+    max-width: none;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 60px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    font-size: 18px;
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+
+/* CTA */
+.cta {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background: white;
+    color: #0f2027;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+    color: #555;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-size: 14px;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: white;
+}
+
+.page {
+    min-height: 100vh;
+    padding: 160px 60px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.page h1 {
+    font-size: 64px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.page p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;        /* prende il colore del testo normale */
+    text-decoration: none;  /* niente sottolineatura */
+    cursor: pointer;        /* rimane cliccabile */
+    transition: color 0.3s; /* optional: smooth hover */
+}
+
+/* opzionale: hover leggero */
+a:hover {
+    color: #ffffff;         /* o qualsiasi colore “highlight” */
+}
+
+.profile-img {
+    width: 220px;           /* dimensione */
+    height: 180px;     
+    border-radius: 0%;   
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 100px 30px;
+    }
+}
+
