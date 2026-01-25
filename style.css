@@ -50,18 +50,23 @@ body {
 
 /* HERO */
 .hero {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding-top: 120px; /* 🔥 QUESTO È IL FIX */
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("pinguin.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
 }
 
 
 .hero-content {
-    max-width: 1100px;
-    width: 100%;
-    padding: 0 60px;
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
 }
 
 .hero-content h1 {
@@ -83,14 +88,18 @@ body {
 
 /* SECTIONS */
 .section {
+    background: #0b0b0b;
+    position: relative;
+    z-index: 2;
+}
+
+.section {
+    position: relative;
+    z-index: 2;
+    background: #0b0b0b;
     padding: 140px 60px;
     display: flex;
     justify-content: center;
-}
-
-.section > * {
-    max-width: 1100px;
-    width: 100%;
 }
 
 
@@ -102,14 +111,18 @@ body {
 
 
 .section p {
-    max-width: 600px;
-    color: #aaa;
-    line-height: 1.7;
+    display: block;       /* forza a stare sotto il titolo */
+    margin-top: 20px;     /* distanza dal titolo */
+    max-width: 800px;     /* non troppo largo */
+    margin-left: auto;    /* centrato orizzontalmente */
+    margin-right: auto;
+    text-align: center;   /* opzionale: centro il testo */
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
 }
 
-.dark {
-    background: #111;
-    max-width: none;
+.section.dark {
+background: #111;
 }
 
 /* CARDS */
@@ -240,12 +253,63 @@ a:hover {
         font-size: 42px;
     }
 
+    /* le cards diventano verticali */
     .cards {
-        grid-template-columns: 1fr;
+        justify-items: center; /* centra le cards nella colonna */
     }
 
+    /* padding sezioni più compatto su mobile */
     .section {
-        padding: 100px 30px;
+        padding: 80px 20px;
+    }
+
+    /* testo pinguino leggermente più piccolo su mobile */
+    .penguin-caption p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .contact-form {
+        width: 100%;
+        max-width: 400px; /* non troppo largo su mobile */
+        margin: 20px auto 0 auto; /* centra e distanza dal titolo */
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* distanza tra input e textarea */
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        width: 100%;
+    }
+
+    .section p {
+        font-size: 0.85rem; /* leggermente più piccolo su telefono */
+        max-width: 90%;      /* occupa quasi tutta la larghezza */
     }
 }
 
+
+
+
+.penguin-caption {
+    background: #0b0b0b;
+    padding: 16px 24px;
+    position: relative;
+    z-index: 3;
+}
+
+.penguin-caption p {
+    font-size: 0.75rem;   /* leggermente più grande */
+    line-height: 1.5;
+    color: rgba(255,255,255,0.8); /* leggermente più visibile */
+    letter-spacing: 0.2px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.penguin-caption em {
+    font-weight: 700;  /* rende il testo in <em> grassetto */
+    font-style: normal; /* cancella il corsivo automatico di <em> */
+}

@@ -9,55 +9,65 @@
 <body>
 <div id="top"></div>
 
-    <header class="hero">
-        <nav class="nav">
-            <a href="#top" class="logo">MATTEO</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<!-- HERO -->
+<header class="hero">
+    <nav class="nav">
+        <a href="#top" class="logo">MATTEO</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-        <div class="hero-content">
-            <h1>Ideas become facts.<br><span>One idea at a time.</span></h1>
-            <p>Music. Technology. Design.</p>
-        </div>
-    </header>
+<!-- PENGUIN CAPTION (testo piccolo sotto la foto) -->
+<section class="penguin-caption">
+    <p>
+        --Un pinguino che, invece di seguire il branco verso il mare, si è staccato da tutti e ha iniziato a camminare verso le montagne.
+        Senza una meta chiara, senza una promessa di successo. Solo una domanda in testa: <em>“But why?”</em>
+        Perché seguire gli altri? Perché fare qualcosa solo perché “si è sempre fatto così”?<br>
+        Non cercava risposte. Cercava senso.
+        E a volte, il vero coraggio non è arrivare da qualche parte, ma avere il coraggio di andarsene.--
+    </p>
+</section>
 
-    <section id="about" class="section">
-        <h2>About me</h2>
-        <p>
-            I'm Matteo. I study, code, play the piano, and think big. I love technology, design, and forward-thinking ideas.
-        </p>
-    </section>
+<!-- ABOUT ME -->
+<section id="about" class="section">
+    <h2>About me</h2>
+    <p>
+        Sono Matteo. Studio, programmo, suono il pianoforte e penso in grande. Amo la tecnologia, il design e le idee innovative.
+    </p>
+</section>
 
-    <section id="skills" class="section dark">
-        <h2>What I do</h2>
-        <div class="cards">
-            <div class="cards">
-    <a href="PIANO.html" class="card">🎹 PIANO</a>
-    <a href="CODE.html" class="card">💻 CODE</a>
-    <a href="TECH.html" class="card">⚡ TECH</a>
-    <a href="D_AND_I.html" class="card">🧠 DESIGN & IDEAS</a>
-</div>
+<!-- WHAT I DO -->
+<section id="skills" class="section dark">
+    <h2>What I do</h2>
+    <div class="cards">
+        <a href="PIANO.html" class="card">🎹 PIANO</a>
+        <a href="CODE.html" class="card">💻 CODE</a>
+        <a href="TECH.html" class="card">⚡ TECH</a>
+        <a href="D_AND_I.html" class="card">🧠 DESIGN & IDEAS</a>
+    </div>
+</section>
 
-        </div>
-    </section>
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2>Contact me!</h2>
 
-    <section id="contact" class="section">
-        <h2>Contact me!</h2>
+    <!-- form sotto il titolo -->
+    <div class="contact-wrapper">
         <form action="https://formspree.io/f/xykgbzya" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" required></textarea>
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <textarea name="message" placeholder="Your message" required></textarea>
+            <button type="submit" class="cta">Send message</button>
+        </form>
+    </div>
+</section>
 
-    <button type="submit" class="cta">Send message</button>
-</form>
-
-    </section>
-
-    <footer>
-        © 2025 Matteo. All rights reserved.
-    </footer>
+<!-- FOOTER -->
+<footer>
+    © 2025 Matteo. All rights reserved.
+</footer>
 
 </body>
 </html>
