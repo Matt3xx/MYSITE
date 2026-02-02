@@ -15,38 +15,77 @@ body {
 /* NAV */
 .nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px 60px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 120px);
+    padding: 16px 30px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.18),
+            rgba(255,255,255,0.04)
+        );
+
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.35),
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        inset 0 -1px 1px rgba(255,255,255,0.08);
+
     z-index: 1000;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.35),
-        rgba(0, 0, 0, 0)
-    );
 }
 
+.nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,0.25),
+        transparent 70%
+    );
+    opacity: 0.25;
+    pointer-events: none;
+}
 
 .nav a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
+    color: rgba(255,255,255,0.8);
     font-size: 14px;
-    margin-left: 30px;
-    transition: 0.3s;
+    margin-left: 26px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: all 0.35s cubic-bezier(.2,.8,.2,1);
 }
 
 .nav a:hover {
+    background: rgba(255,255,255,0.22);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 6px 14px rgba(0,0,0,0.25);
     color: white;
+    transform: translateX(-50%) translateY(-2px);
 }
+
 
 .logo {
     font-weight: 600;
     letter-spacing: 2px;
+    margin-left: 0;
 }
+
 
 /* HERO */
 .hero {
@@ -126,26 +165,90 @@ background: #111;
 }
 
 /* CARDS */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.cards { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 25px;
-    margin-top: 60px;
-}
+    grid-template-columns: 
+    repeat(2, 1fr); gap: 25px; 
+    margin-top: 60px; }
 
 .card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 180px; /* prima era implicito, ora fissa una larghezza minima */
+    text-align: center; /* per centrare il testo */
+
+    height: 110px;
+    border-radius: 28px;
+
     font-size: 18px;
-    transition: 0.4s ease;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    color: rgba(255,255,255,0.9);
+
+    background:
+        radial-gradient(
+            120% 120% at 30% 0%,
+            rgba(255,255,255,0.35),
+            rgba(255,255,255,0.08) 45%,
+            rgba(255,255,255,0.03)
+        );
+
+    backdrop-filter: blur(30px) saturate(220%);
+    -webkit-backdrop-filter: blur(30px) saturate(220%);
+
+    border: 1px solid rgba(255,255,255,0.28);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.45),
+        inset 0 2px 2px rgba(255,255,255,0.45),
+        inset 0 -6px 12px rgba(0,0,0,0.25);
+
+    transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        140deg,
+        rgba(255,255,255,0.55),
+        rgba(255,255,255,0.15) 35%,
+        transparent 60%
+    );
+    opacity: 0.3;
+    pointer-events: none;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.14);
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
 }
+
+
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.55),
+        inset 0 2px 2px rgba(255,255,255,0.55),
+        inset 0 -8px 16px rgba(0,0,0,0.35);
+}
+
+.card:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
 
 
 /* CTA */
@@ -255,8 +358,14 @@ a:hover {
 
     /* le cards diventano verticali */
     .cards {
-        justify-items: center; /* centra le cards nella colonna */
+        grid-template-columns: 1fr;
     }
+
+    .card {
+        height: 90px;
+        font-size: 16px;
+    }
+
 
     /* padding sezioni più compatto su mobile */
     .section {
@@ -288,7 +397,20 @@ a:hover {
         font-size: 0.85rem; /* leggermente più piccolo su telefono */
         max-width: 90%;      /* occupa quasi tutta la larghezza */
     }
+
+
+    .nav {
+        width: calc(100% - 32px);
+        padding: 14px 20px;
+    }
+
+    .nav a {
+        margin-left: 14px;
+        padding: 6px 12px;
+    }
 }
+
+
 
 
 
@@ -312,4 +434,293 @@ a:hover {
 .penguin-caption em {
     font-weight: 700;  /* rende il testo in <em> grassetto */
     font-style: normal; /* cancella il corsivo automatico di <em> */
+}
+
+/* =========================
+   PIANO PAGE STYLES
+   ========================= */
+
+.page h1 {
+    font-size: 56px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.page p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 650px;
+    line-height: 1.6;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.profile-img {
+    display: block;
+    width: 280px;
+    height: 200px;
+    border-radius: 12px;  /* leggermente arrotondata */
+    margin: 0 auto 40px auto; /* centrata */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* ombra elegante */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* CTA LINK BACK HOME */
+.page .cta-back {
+    display: inline-block;
+    margin: 20px auto 0 auto;
+    padding: 12px 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.page .cta-back:hover {
+    background: white;
+    color: #0f2027;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .page h1 {
+        font-size: 40px;
+    }
+
+    .page p {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+
+    .profile-img {
+        width: 200px;
+        height: 150px;
+    }
+}
+
+
+/* =========================
+   CODE PAGE STYLES
+   ========================= */
+
+.page h1 {
+    font-size: 56px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.page p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 650px;
+    line-height: 1.6;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.profile-img {
+    display: block;
+    width: 380px;   /* dimensione maggiore per Code */
+    height: 280px;
+    border-radius: 12px;  /* leggermente arrotondata */
+    margin: 0 auto 40px auto; /* centrata */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* ombra elegante */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* CTA LINK BACK HOME */
+.page .cta-back {
+    display: inline-block;
+    margin: 20px auto 0 auto;
+    padding: 12px 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.page .cta-back:hover {
+    background: white;
+    color: #0f2027;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .page h1 {
+        font-size: 40px;
+    }
+
+    .page p {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+
+    .profile-img {
+        width: 250px;
+        height: 180px;
+    }
+}
+
+
+/* =========================
+   DESIGN & IDEAS PAGE STYLES
+   ========================= */
+
+.page h1 {
+    font-size: 56px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.page p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 650px;
+    line-height: 1.6;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+/* immagini multiple centrate */
+.page .profile-img {
+    display: block;
+    width: 380px;
+    height: 280px;
+    border-radius: 12px;  /* leggermente arrotondate */
+    margin: 0 auto 40px auto; /* centrata e distanziata */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page .profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* CTA LINK BACK HOME */
+.page .cta-back {
+    display: inline-block;
+    margin: 20px auto 0 auto;
+    padding: 12px 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.page .cta-back:hover {
+    background: white;
+    color: #0f2027;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .page h1 {
+        font-size: 40px;
+    }
+
+    .page p {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+
+    .page .profile-img {
+        width: 250px;
+        height: 180px;
+    }
+}
+
+
+/* =========================
+   TECHNOLOGY PAGE STYLES
+   ========================= */
+
+.page h1 {
+    font-size: 56px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.page p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 650px;
+    line-height: 1.6;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+/* immagine centrata */
+.page .profile-img {
+    display: block;
+    width: 380px;
+    height: 280px;
+    border-radius: 12px;  /* leggermente arrotondata */
+    margin: 0 auto 40px auto; /* centrata e distanziata dal testo */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page .profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* CTA LINK BACK HOME */
+.page .cta-back {
+    display: inline-block;
+    margin: 20px auto 0 auto;
+    padding: 12px 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.page .cta-back:hover {
+    background: white;
+    color: #0f2027;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .page h1 {
+        font-size: 40px;
+    }
+
+    .page p {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+
+    .page .profile-img {
+        width: 250px;
+        height: 180px;
+    }
 }
