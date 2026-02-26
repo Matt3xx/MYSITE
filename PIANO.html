@@ -19,15 +19,29 @@
         La musica è disciplina, emozione e visione.
     </p>
     <img src="PIANO.png" alt="PIANO" class="profile-img">
-    <style>.profile-img {
-    width: 220px;           /* dimensione */
-    height: 180px;     
-    border-radius: 0%;   
-    margin-bottom: 20px;
-    display: block;
-}
-</style>
+
+    <!-- Sezione PLAY -->
+    <div class="song-player fade-in">
+        <p class="song-name">LALALAND MIA AND SEBASTIAN THEME</p>
+        <button class="play-btn">PLAY</button>
+    </div>
 </section>
+
+<!-- SCRIPT JS incorporato -->
+<script>
+    const playBtn = document.querySelector('.play-btn');
+    const audio = new Audio('LALALAND.mp3'); // il file deve stare nella stessa cartella dell'HTML
+
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playBtn.textContent = 'PAUSE';
+        } else {
+            audio.pause();
+            playBtn.textContent = 'PLAY';
+        }
+    });
+</script>
 
 </body>
 </html>

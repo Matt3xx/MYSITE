@@ -13,21 +13,30 @@
 </nav>
 
 <section class="page">
-    <h1>Code</h1>
-    <p>
+    <h1 class="glow-text">Code</h1>
+    <p class="fade-in">
         Programmare significa trasformare idee in sistemi reali.  
         Web, logica, struttura e pulizia.
     </p>
-    <img src="CODE.jpg" alt="PIANO" class="profile-img">
-    <style>.profile-img {
-    width: 380px;           /* dimensione */
-    height: 280px;     
-    border-radius: 0%;   
-    margin-bottom: 20px;
-    display: block;
+    <img src="CODE.jpg" alt="PIANO" class="profile-img animate-img">
+
+    <!-- Finestra JS -->
+    <div class="js-window fade-in">
+        <div class="js-header">Esempio JS</div>
+        <pre class="js-code">
+// Mostra un alert in JS
+function saluta() {
+    alert("Ciao dal tuo script!");
 }
-</style>
+saluta();
+        </pre>
+    </div>
 </section>
 
+<footer>
+    <p>&copy; 2026 Matteo. Tutti i diritti riservati.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
