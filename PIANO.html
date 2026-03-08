@@ -1,46 +1,111 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piano | Matteo</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piano | Matteo</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <nav class="nav">
-    <a href="index.html" class="logo">MATTEO</a>
+<a href="index.html" class="logo">MATTEO</a>
 </nav>
 
 <section class="page">
-    <h1>Piano</h1>
-    <p>
-        Suono il pianoforte da oltre 8 anni.  
-        La musica è disciplina, emozione e visione.
-    </p>
-    <img src="PIANO.png" alt="PIANO" class="profile-img">
 
-    <!-- Sezione PLAY -->
-    <div class="song-player fade-in">
-        <p class="song-name">LALALAND MIA AND SEBASTIAN THEME</p>
-        <button class="play-btn">PLAY</button>
-    </div>
+<h1>Piano</h1>
+
+<p>
+Suono il pianoforte da oltre 8 anni.  
+La musica è disciplina, emozione e visione.
+</p>
+
+<img src="PIANO.png" alt="PIANO" class="profile-img">
+
+<p>
+    Ecco alcuni dei miei brani preferiti:</p>
+
+<!-- PLAYER 1 -->
+<div class="song-player fade-in">
+<a href="LALALAND.pdf" target="_blank" class="song-name">
+LALALAND MIA AND SEBASTIAN THEME
+</a>
+<button class="play-btn" data-song="LALALAND.mp3">PLAY</button>
+</div>
+
+
+<!-- PLAYER 2 -->
+<div class="song-player fade-in">
+<a href="I_GIORNI.pdf" target="_blank" class="song-name">
+I GIORNI - Ludovico Einaudi
+</a>
+<button class="play-btn" data-song="I_GIORNI.mp3">PLAY</button>
+</div>
+
+
+<!-- PLAYER 3 -->
+<div class="song-player fade-in">
+<a href="NUVOLE_BIANCHE.pdf" target="_blank" class="song-name">
+NUVOLE BIANCHE - Ludovico Einaudi
+</a>
+<button class="play-btn" data-song="NUVOLE_BIANCHE.mp3">PLAY</button>
+</div>
+
+<!-- PLAYER 2 -->
+<div class="song-player fade-in">
+<a href="CHOPIN.pdf" target="_blank" class="song-name">
+NOCTURNE OP.9 NO. 1 - F. Chopin
+</a>
+<button class="play-btn" data-song="CHOPIN.mp3">PLAY</button>
+</div>
+
+
+<!-- PLAYER 3 -->
+<div class="song-player fade-in">
+<a href="IDEA_10.pdf" target="_blank" class="song-name">
+IDEA 10 - Gibran Alcocer
+</a>
+<button class="play-btn" data-song="IDEA_10.mp3">PLAY</button>
+</div>
+
 </section>
 
-<!-- SCRIPT JS incorporato -->
-<script>
-    const playBtn = document.querySelector('.play-btn');
-    const audio = new Audio('LALALAND.mp3'); // il file deve stare nella stessa cartella dell'HTML
+<footer>
+    <p>&copy; 2026 Matteo. Tutti i diritti riservati.</p>
+</footer>
 
-    playBtn.addEventListener('click', () => {
-        if (audio.paused) {
-            audio.play();
-            playBtn.textContent = 'PAUSE';
-        } else {
-            audio.pause();
-            playBtn.textContent = 'PLAY';
-        }
-    });
+<script>
+
+const buttons = document.querySelectorAll(".play-btn");
+
+buttons.forEach(button => {
+
+let audio = new Audio(button.dataset.song);
+
+button.addEventListener("click", () => {
+
+if (audio.paused) {
+
+audio.play();
+button.textContent = "PAUSE";
+
+} else {
+
+audio.pause();
+button.textContent = "PLAY";
+
+}
+
+});
+
+audio.onended = () => {
+button.textContent = "PLAY";
+};
+
+});
+
 </script>
 
 </body>
